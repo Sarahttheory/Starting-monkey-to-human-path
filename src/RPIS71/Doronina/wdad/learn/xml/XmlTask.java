@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class XmlTask {
-
     private Document document;
     private String path;
 
@@ -32,9 +31,90 @@ public class XmlTask {
         document = domBuilder.build(doc);
     }
 
-    public String getNoteText (User owner, String title) {
-
+    public String getNoteText(User owner, String title)
+    {
         Element root = document.getRootElement();
+
         List<Element> childs = root.getChildren("note");
+        for (Element child: childs) {
+            String childTitle = child.getChild("title").getText();
+
+            if (childTitle.equals(title)) {
+                Element childOwner = child.getChild("owner");
+                String email = childOwner.getAttribute("mail").getValue();
+                String name = childOwner.getAttribute("name").getValue();
+
+                if (email.equals(owner.getMail()) && name.equals(owner.getName())) {
+                    return child.getChild("text").getText();
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public void updateNote(User owner, String title, String newText) throws IOException {
+        Element root = document.getRootElement();
+
+        List<Element> childs = root.getChildren("note");
+        for (Element child: childs) {
+            String childTitle = child.getChild("title").getText();
+
+            if (childTitle.equals(title)) {
+                Element childOwner = child.getChild("owner");
+                String email = childOwner.getAttribute("mail").getValue();
+                String name = childOwner.getAttribute("name").getValue();
+
+                if (email.equals(owner.getMail()) && name.equals(owner.getName())) {
+                    child.getChild("text").setText(newText);
+                }
+            }
+        }
+
+        XMLOutputter xmlOutputter = new XMLOutputter();
+        xmlOutputter.setFormat(Format.getPrettyFormat());
+        xmlOutputter.output(document, new FileWriter(path));
+    }
+
+    public void setPrivileges(User owner, String title, int newRights) throws IOException {
+        Element root = document.getRootElement();
+
+        List<Element> childs = root.getChildren("note");
+        for (Element child: childs) {
+            String childTitle = child.getChild("title").getText();
+
+            if (childTitle.equals(title)) {
+                List<Element> childPrivileges = child.getChildren("privileges");
+
+                for (Element privilegeElement: childPrivileges) {
+                    List<Element> privileges = privilegeElement.getChildren();
+
+                    for (Element privilege: privileges) {
+                        if (privilege.getName().equals("user")) {
+                            String email = privilege.getAttribute("mail").getValue();
+                            String name = privilege.getAttribute("name").getValue();
+
+                            if (email.equals(owner.getMail()) && name.equals(owner.getName())) {
+                                switch (newRights) {
+                                    case 0:
+                                        privilege.detach();
+                                        break;
+                                    case 1:
+                                        privilege.getAttribute("rights").setValue("R");
+                                        break;
+                                    case 3:
+                                        privilege.getAttribute("rights").setValue("RW");
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        XMLOutputter xmlOutputter = new XMLOutputter();
+        xmlOutputter.setFormat(Format.getPrettyFormat());
+        xmlOutputter.output(document, new FileWriter(path));
     }
 }
