@@ -4,7 +4,7 @@
     <note title="Memories" text="blablablabla" owner="Oleg" privileges="daddy" cdate="24">
    <text>
        <title>
-           <owner name="Oleg">
+           <owner name="Oleg" mail="">
                 <privileges>
                         <ALL>
                             <user>
