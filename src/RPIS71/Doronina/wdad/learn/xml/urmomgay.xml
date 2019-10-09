@@ -5,11 +5,11 @@
     <note>
         <title>Лучший заголовок на диком западе</title>
         <text>Лучший текст на диком западе</text>
-        <owner name ="fffff" mail="fff">
-        </owner>
+        <owner name ="fffff" mail="fff"/>
+
         <privileges>
-       <user name="ffff" mail="fff">
-       </user>
+       <user name="ffff" mail="fff"/>
+
       </privileges>
         <cdate>22.02.2022</cdate>
   </note>
