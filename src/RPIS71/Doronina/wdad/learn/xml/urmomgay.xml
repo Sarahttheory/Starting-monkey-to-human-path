@@ -5,12 +5,30 @@
     <note>
         <title>Лучший заголовок на диком западе</title>
         <text>Лучший текст на диком западе</text>
-        <owner name ="fffff" mail="fff"/>
-
+        <owner name ="Арсений" mail="Poop@mail.ru"/>
         <privileges>
-       <user name="ffff" mail="fff"/>
-
+       <user name="Екатерина" mail="Popka@mail.ru"/>
       </privileges>
         <cdate>22.02.2022</cdate>
   </note>
+
+    <note>
+        <title>Пеперони</title>
+        <text>Пицца</text>
+        <owner name ="Роза" mail="kek@mail.ru"/>
+        <privileges>
+            <user name="Алевтина" mail="lol@mail.ru"/>
+        </privileges>
+        <cdate>12.01.2019</cdate>
+    </note>
+
+    <note>
+        <title></title>
+        <text></text>
+        <owner name ="Полина" mail="lalaled@mail.ru"/>
+        <privileges>
+            <user name="Джамилия" mail="gryaz@mail.ru"/>
+        </privileges>
+        <cdate>08.12.2008</cdate>
+    </note>
 </notes>
