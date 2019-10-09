@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE notes SYSTEM "notes.dtd">
 <notes>
-    <note title="Memories" text="blablablabla" owner="Oleg" privileges="daddy" cdate="24">
-   <text>
-       <title>
-           <owner name="Oleg" mail="">
-                <privileges>
-                        <ALL>
-                            <user>
-                                <cdata>
-                                </cdata>>
-                            </user>>
-                        </ALL>>
-                </privileges>
 
-           </owner>
-       </title>
-   </text>
-
-    </note>
+    <note>
+        <title>Лучший заголовок на диком западе</title>
+        <text>Лучший текст на диком западе</text>
+        <owner name ="fffff" mail="fff">
+        </owner>
+        <privileges>
+       <user name="ffff" mail="fff">
+       </user>
+      </privileges>
+        <cdate>22.02.2022</cdate>
+  </note>
 </notes>
